@@ -1,0 +1,18 @@
+<!-- 主應用程式容器 -->
+<div class="app-container">
+  <!-- 導航欄 -->
+  <nav class="main-nav">
+    <div class="nav-content">
+      <a routerLink="/" class="logo">我的履歷</a>
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active">首頁</a>
+        <a routerLink="/about" routerLinkActive="active">關於我</a>
+        <a routerLink="/portfolio" routerLinkActive="active">作品集</a>
+        <a routerLink="/contact" routerLinkActive="active">聯絡我</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 路由出口 -->
+  <router-outlet></router-outlet>
+</div> 
