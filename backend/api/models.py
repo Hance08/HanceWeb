@@ -1,40 +1,42 @@
-from mongoengine import Document, StringField, EmailField, DateTimeField, IntField, ListField, URLField
-from django.contrib.auth.models import User
+from django.db import models
 from datetime import datetime
 
-class Project(Document):
-    title = StringField(max_length=200, required=True)
-    description = StringField(required=True)
-    image_url = URLField()
-    technologies = ListField(StringField())
-    github_url = URLField()
-    live_url = URLField()
-    created_at = DateTimeField(default=datetime.utcnow)
-    updated_at = DateTimeField(default=datetime.utcnow)
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image_url = models.URLField(blank=True, null=True)
+    technologies = models.JSONField(default=list)
+    github_url = models.URLField(blank=True, null=True)
+    live_url = models.URLField(blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.utcnow)
+    updated_at = models.DateTimeField(default=datetime.utcnow)
 
-    meta = {'collection': 'projects'}
+    class Meta:
+        db_table = 'projects'
 
     def __str__(self):
         return self.title
 
-class Contact(Document):
-    name = StringField(max_length=100, required=True)
-    email = EmailField(required=True)
-    message = StringField(required=True)
-    created_at = DateTimeField(default=datetime.utcnow)
-    status = StringField(default='pending')
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(default=datetime.utcnow)
+    status = models.CharField(max_length=20, default='pending')
 
-    meta = {'collection': 'contacts'}
+    class Meta:
+        db_table = 'contacts'
 
     def __str__(self):
         return f"{self.name} - {self.email}"
 
-class Skill(Document):
-    name = StringField(max_length=100, required=True)
-    category = StringField(max_length=50, required=True)
-    proficiency = IntField(min_value=1, max_value=5, required=True)
+class Skill(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=50)
+    proficiency = models.IntegerField()
     
-    meta = {'collection': 'skills'}
+    class Meta:
+        db_table = 'skills'
 
     def __str__(self):
         return self.name

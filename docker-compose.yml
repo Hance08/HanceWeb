@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: hance-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: hance-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=change_this_to_a_secure_key_in_production
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_USE_TLS=True
+      - EMAIL_HOST_USER=your-email@gmail.com
+      - EMAIL_HOST_PASSWORD=your-app-password
+      - DEFAULT_FROM_EMAIL=your-email@gmail.com
+      - ADMIN_EMAIL=your-email@gmail.com
+    networks:
+      - app-network
+    volumes:
+      - backend-data:/app/data
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  backend-data: 
