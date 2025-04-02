@@ -4,5 +4,43 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  // 淺色主題的顏色變量
+  --bg-primary: #f0f9ff;
+  --bg-secondary: #e0f2fe;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --accent-color: #0284c7;
+}
+
+.dark-theme {
+  // 深色主題的顏色變量
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --accent-color: #38bdf8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  &:hover {
+    color: var(--accent-color);
+    opacity: 0.8;
+  }
+}
+
+.active {
+  font-weight: bold;
+  opacity: 1 !important;
+}

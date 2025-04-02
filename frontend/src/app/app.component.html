@@ -1,18 +1,26 @@
 <!-- 主應用程式容器 -->
-<div class="app-container">
-  <!-- 導航欄 -->
-  <nav class="main-nav">
-    <div class="nav-content">
-      <a routerLink="/" class="logo">我的履歷</a>
-      <div class="nav-links">
-        <a routerLink="/" routerLinkActive="active">首頁</a>
-        <a routerLink="/about" routerLinkActive="active">關於我</a>
-        <a routerLink="/portfolio" routerLinkActive="active">作品集</a>
-        <a routerLink="/contact" routerLinkActive="active">聯絡我</a>
+<div class="min-h-screen flex flex-col">
+  <header class="z-10">
+    <nav class="bg-slate-900 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <a routerLink="/" class="font-bold text-xl">Hance Web</a>
+        </div>
+        <div class="flex items-center space-x-6">
+          <div class="hidden md:flex space-x-6">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">首頁</a>
+            <a routerLink="/about" routerLinkActive="active">關於</a>
+            <a routerLink="/contact" routerLinkActive="active">聯絡我</a>
+          </div>
+          <app-theme-toggle></app-theme-toggle>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
+  <!-- 動態背景組件 -->
+  <app-animated-background></app-animated-background>
+  
   <!-- 路由出口 -->
   <router-outlet></router-outlet>
 </div> 
