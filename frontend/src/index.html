@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="utf-8">
   <title>我的履歷</title>
@@ -7,9 +7,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- LXGW WenKai TC 字體 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont/style.css">
+  
+  <style>
+    /* 針對文本內容應用字體，避免影響圖標 */
+    body {
+      font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif;
+    }
+    
+    /* 專門針對中文文本 */
+    :lang(zh), :lang(zh-TW), [lang="zh"], [lang="zh-TW"] {
+      font-family: 'LXGW WenKai TC', 'Quicksand', sans-serif;
+    }
+    
+    /* 保護圖標字體 */
+    .material-icons {
+      font-family: 'Material Icons' !important;
+    }
+    
+    .fa, .fas {
+      font-family: 'Font Awesome 6 Free' !important;
+    }
+    
+    .far {
+      font-family: 'Font Awesome 6 Regular' !important;
+    }
+    
+    .fab {
+      font-family: 'Font Awesome 6 Brands' !important;
+    }
+  </style>
 </head>
 <body class="mat-typography">
   <app-root></app-root>

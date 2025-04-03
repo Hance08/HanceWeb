@@ -2,6 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
 }
 
 .nav-header {
@@ -10,11 +11,13 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   color: #f1f5f9;
   border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
   
   a {
     color: #cbd5e1;
     transition: color 0.3s ease, transform 0.2s ease;
     text-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+    font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
     
     &:hover {
       color: #38bdf8;
@@ -35,6 +38,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
 
   .nav-content {
     max-width: 1200px;
@@ -50,6 +54,7 @@
     font-weight: bold;
     color: #333;
     text-decoration: none;
+    font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
   }
 
   .nav-links {
@@ -61,6 +66,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif !important;
 
       &:hover {
         color: #333;
@@ -72,4 +78,9 @@
       }
     }
   }
+}
+
+/* 確保中文文本正確顯示 */
+:lang(zh), :lang(zh-TW), [lang="zh"], [lang="zh-TW"] {
+  font-family: 'LXGW WenKai TC', 'Quicksand', sans-serif !important;
 }
