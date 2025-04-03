@@ -32,8 +32,10 @@
   <div class="section-nav">
     <button class="nav-btn" data-section="about" (click)="scrollToSection('about')">自我介紹</button>
     <button class="nav-btn" data-section="skills" (click)="scrollToSection('skills')">技能專長</button>
+    <button class="nav-btn" data-section="languages" (click)="scrollToSection('languages')">語文能力</button>
     <button class="nav-btn" data-section="education" (click)="scrollToSection('education')">學歷</button>
     <button class="nav-btn" data-section="projects" (click)="scrollToSection('projects')">專案經驗</button>
+    <button class="nav-btn" data-section="certifications" (click)="scrollToSection('certifications')">證照</button>
     <button class="nav-btn" data-section="experience" (click)="scrollToSection('experience')">工作經歷</button>
   </div>
 
@@ -267,6 +269,63 @@
             </div>
           </div>
         </div>
+
+        <div class="skill-card docker">
+          <div class="skill-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Pytorch</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 70%"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 語文能力 -->
+    <section class="languages-section" id="languages">
+      <h2>語文能力</h2>
+      <div class="languages-grid">
+        <div class="language-card">
+          <div class="language-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="language-info">
+            <h3>英文</h3>
+            <div class="language-skills">
+              <div class="skill-item">
+                <span class="skill-name">聽力</span>
+                <span class="skill-level">高級</span>
+                <div class="proficiency-level">
+                  <div class="level-bar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">口說</span>
+                <span class="skill-level">中級</span>
+                <div class="proficiency-level">
+                  <div class="level-bar" style="width: 65%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">閱讀</span>
+                <span class="skill-level">高級</span>
+                <div class="proficiency-level">
+                  <div class="level-bar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">寫作</span>
+                <span class="skill-level">中級</span>
+                <div class="proficiency-level">
+                  <div class="level-bar" style="width: 65%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -306,6 +365,59 @@
           </ul>
         </div>
         <!-- 可以添加更多專案 -->
+      </div>
+    </section>
+
+    <!-- 證照 -->
+    <section class="certifications-section" id="certifications">
+      <h2>證照</h2>
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certification-info">
+            <h3>TOEIC多益</h3>
+            <p class="cert-date">2023年</p>
+            <p class="cert-score">分數: 675</p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certification-info">
+            <h3>電腦軟體應用(丙級)</h3>
+            <p class="cert-date">2020年</p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certification-info">
+            <h3>電腦軟體應用(乙級)</h3>
+            <p class="cert-date">2021年</p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certification-info">
+            <h3>商教會 第一級</h3>
+            <p class="cert-date">2022年</p>
+          </div>
+        </div>
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certification-info">
+            <h3>會計事務-資訊</h3>
+            <p class="cert-date">2022年</p>
+          </div>
+        </div>
       </div>
     </section>
 
