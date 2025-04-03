@@ -1,5 +1,5 @@
 <!-- 首頁內容 -->
-<div class="home-container" [ngClass]="currentTheme">
+<div class="home-container dark">
   <!-- 個人資料區域 -->
   <section class="profile-section">
     <div class="profile-header">
@@ -20,44 +20,110 @@
   <!-- 自我介紹 -->
   <section class="about-section">
     <h2>自我介紹</h2>
-    <div class="content">
-      <div class="about-category">
+    <div class="about-cards">
+      <!-- 課程經歷 -->
+      <div class="about-card courses">
+        <div class="card-icon">
+          <i class="fas fa-book"></i>
+        </div>
         <h3>課程經歷</h3>
-        <ul>
-          <li>修習很多關於程式的課程，Python、Java、Go等課程
+        <div class="card-content">
+          <div class="about-item">
+            <h4><i class="fas fa-laptop-code"></i>程式語言課程</h4>
             <ul>
-              <li>熟悉這些程式語言的操作</li>
-              <li>能夠實際應用這些程式語言</li>
+              <li>Python程式設計課程</li>
+              <li>Java物件導向程式設計課程</li>
+              <li>Go程式設計課程</li>
+              <li>行動裝置程式設計</li>
             </ul>
-          </li>
-          <li>軟體開發與維運的課程
+          </div>
+          <div class="about-item">
+            <h4><i class="fas fa-server"></i>DevOps</h4>
             <ul>
-              <li>學習軟體開發的重要核心</li>
-              <li>使用 Git 進行版本控制</li>
-              <li>團隊合作開發，提升效率</li>
+              <li>Git版本控制</li>
+              <li>Git Actions</li>
+              <li>自動化測試</li>
             </ul>
-          </li>
-        </ul>
+          </div>
+          <div class="about-item">
+            <h4><i class="fas fa-server"></i>網路安全 (修習中)</h4>
+            <ul>
+              <li>OpenSSH</li>
+              <li>JWT</li>
+              <li>TLS/SSL</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="about-category">
+      <!-- 專題經歷 -->
+      <div class="about-card project">
+        <div class="card-icon">
+          <i class="fas fa-project-diagram"></i>
+        </div>
         <h3>專題經歷</h3>
-        <ul>
-          <li>Flutter 前端框架開發
+        <div class="card-content">
+          <div class="about-item">
+            <h4><i class="fas fa-mobile-alt"></i> Flutter 框架開發</h4>
             <ul>
               <li>使用 Dart 語言撰寫 MVVM 架構的手機 APP</li>
               <li>了解 Git 對專案開發的重要性</li>
               <li>架設 MongoDB Server</li>
               <li>使用 Python 撰寫 API</li>
             </ul>
-          </li>
-        </ul>
+          </div>
+          <div class="about-item">
+            <h4><i class="fab fa-git-alt"></i> Git版本控制</h4>
+            <ul>
+              <li>了解 Git 對專案開發的重要性</li>
+              <li>使用 Git 進行版本控制</li>
+            </ul>
+          </div>
+          <div class="about-item">
+            <h4><i class="fas fa-database"></i> MongoDB</h4>
+            <ul>
+              <li>MongoDB 架設</li>
+              <li>MongoDB 連線</li>
+            </ul>
+          </div>
+          <div class="about-item">
+            <h4><i class="fas fa-bolt"></i> FastAPI</h4>
+            <ul>
+              <li>撰寫API</li>
+              <li>串接API</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="about-category">
+      <!-- 自學經歷 -->
+      <div class="about-card self-learning">
+        <div class="card-icon">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <h3>自學經歷</h3>
+        <div class="card-content">
+          <div class="about-item">
+            <div class="tech-tags">
+              <span class="tech-tag docker"><i class="fab fa-docker"></i> Docker</span>
+              <span class="tech-tag mongodb"><i class="fas fa-database"></i> MongoDB</span>
+              <span class="tech-tag fastapi"><i class="fas fa-bolt"></i> FastAPI</span>
+              <span class="tech-tag flutter"><i class="fas fa-mobile-alt"></i> Flutter</span>
+              <span class="tech-tag angular"><i class="fab fa-angular"></i> Angular</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 志工經歷 -->
+      <div class="about-card volunteer">
+        <div class="card-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
         <h3>志工經歷</h3>
-        <ul>
-          <li>探訪長者活動
+        <div class="card-content">
+          <div class="about-item">
+            <h4><i class="fas fa-heart"></i> 探訪長者活動</h4>
             <ul>
               <li>實地參訪台北市香柏樹長者關懷協會</li>
               <li>舉辦活動與長者互動</li>
@@ -65,17 +131,25 @@
               <li>協助量測長者健康數據（血壓、體重、體溫）</li>
               <li>主持老歌猜謎活動</li>
             </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="about-category">
+      <!-- 未來展望 -->
+      <div class="about-card future">
+        <div class="card-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
         <h3>未來展望</h3>
-        <ul>
-          <li>希望在軟體工程師的領域闖出一片天</li>
-          <li>持續學習新事物</li>
-          <li>勇於接受挑戰，不怕失敗</li>
-        </ul>
+        <div class="card-content">
+          <div class="about-item">
+            <ul>
+              <li>希望在軟體工程師的領域闖出一片天</li>
+              <li>持續學習新事物</li>
+              <li>勇於接受挑戰，不怕失敗</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -125,28 +199,92 @@
   <!-- 技能專長 -->
   <section class="skills-section">
     <h2>技能專長</h2>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3>程式語言</h3>
-        <ul>
-          <li>Java</li>
-          <li>Python</li>
-          <li>Go</li>
-        </ul>
+    <div class="skills-cards">
+      <!-- 程式語言 -->
+      <div class="skill-card java">
+        <div class="skill-icon">
+          <i class="fab fa-java"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Java</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 85%"></div>
+          </div>
+        </div>
       </div>
-      <div class="skill-category">
-        <h3>框架工具</h3>
-        <ul>
-          <li>Angular</li>
-          <li>Flutter</li>
-        </ul>
+      
+      <div class="skill-card python">
+        <div class="skill-icon">
+          <i class="fab fa-python"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Python</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 90%"></div>
+          </div>
+        </div>
       </div>
-      <div class="skill-category">
-        <h3>其他技能</h3>
-        <ul>
-          <li>Git</li>
-          <li>Docker</li>
-        </ul>
+      
+      <div class="skill-card go">
+        <div class="skill-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Go</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 框架工具 -->
+      <div class="skill-card angular">
+        <div class="skill-icon">
+          <i class="fab fa-angular"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Angular</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-card flutter">
+        <div class="skill-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Flutter</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 其他技能 -->
+      <div class="skill-card git">
+        <div class="skill-icon">
+          <i class="fab fa-git-alt"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Git</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-card docker">
+        <div class="skill-icon">
+          <i class="fab fa-docker"></i>
+        </div>
+        <div class="skill-info">
+          <h3>Docker</h3>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 70%"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -5,15 +5,6 @@
 @tailwind utilities;
 
 :root {
-  // 淺色主題的顏色變量
-  --bg-primary: #f0f9ff;
-  --bg-secondary: #e0f2fe;
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --accent-color: #0284c7;
-}
-
-.dark-theme {
   // 深色主題的顏色變量
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
@@ -26,7 +17,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: var(--bg-primary);
+  background-color: transparent;
   color: var(--text-primary);
 }
 

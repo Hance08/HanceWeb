@@ -1,14 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ThemeService, ThemeMode } from '../../services/theme.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-animated-background',
   template: `
-    <div class="animated-background" [ngClass]="currentTheme">
-      <div class="gradient-sphere"></div>
-      <div class="gradient-sphere"></div>
-      <div class="gradient-sphere"></div>
+    <div class="animated-background">
+      <div class="stars">
+        <div class="star" *ngFor="let star of stars"></div>
+      </div>
     </div>
   `,
   styles: [`
@@ -20,113 +18,78 @@ import { Subscription } from 'rxjs';
       height: 100vh;
       overflow: hidden;
       z-index: -1;
-      transition: background-color 0.5s ease;
-    }
-
-    .animated-background.dark {
       background: #0f172a;
     }
 
-    .animated-background.light {
-      background: #f0f9ff;
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .gradient-sphere {
+    .star {
       position: absolute;
+      width: 2px;
+      height: 2px;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.5;
-      animation: float 20s infinite ease-in-out;
-      transition: background 0.5s ease;
+      animation: twinkle 3s infinite ease-in-out;
+      background-color: #fff;
+      opacity: 0;
     }
 
-    .dark .gradient-sphere:nth-child(1) {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(124,58,237,1) 0%, rgba(99,102,241,0) 70%);
-      top: -100px;
-      left: -100px;
-      animation-delay: -5s;
-    }
-
-    .dark .gradient-sphere:nth-child(2) {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(236,72,153,1) 0%, rgba(244,63,94,0) 70%);
-      bottom: -150px;
-      right: -100px;
-      animation-delay: -10s;
-    }
-
-    .dark .gradient-sphere:nth-child(3) {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(34,211,238,1) 0%, rgba(56,189,248,0) 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation-delay: -15s;
-    }
-
-    .light .gradient-sphere:nth-child(1) {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(79,70,229,0.3) 0%, rgba(99,102,241,0) 70%);
-      top: -100px;
-      left: -100px;
-      animation-delay: -5s;
-    }
-
-    .light .gradient-sphere:nth-child(2) {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(219,39,119,0.3) 0%, rgba(244,63,94,0) 70%);
-      bottom: -150px;
-      right: -100px;
-      animation-delay: -10s;
-    }
-
-    .light .gradient-sphere:nth-child(3) {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(6,182,212,0.3) 0%, rgba(56,189,248,0) 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation-delay: -15s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(100px, 100px);
+    @keyframes twinkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
       }
       50% {
-        transform: translate(0, 200px);
+        opacity: 0.7;
+        transform: scale(1.2);
       }
-      75% {
-        transform: translate(-100px, 100px);
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
       }
     }
   `]
 })
-export class AnimatedBackgroundComponent implements OnInit, OnDestroy {
-  currentTheme: ThemeMode = 'dark';
-  private themeSubscription: Subscription | null = null;
+export class AnimatedBackgroundComponent implements OnInit {
+  stars: {x: number, y: number, size: number, delay: number}[] = [];
 
-  constructor(private themeService: ThemeService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.themeSubscription = this.themeService.currentTheme$.subscribe(theme => {
-      this.currentTheme = theme;
-    });
+    // 創建動畫星星
+    this.generateStars();
   }
 
-  ngOnDestroy(): void {
-    if (this.themeSubscription) {
-      this.themeSubscription.unsubscribe();
+  generateStars(): void {
+    // 創建150個星星
+    for (let i = 0; i < 150; i++) {
+      const x = Math.random() * 100; // 隨機x位置（百分比）
+      const y = Math.random() * 100; // 隨機y位置（百分比）
+      const size = Math.random() * 2 + 1; // 隨機大小
+      const delay = Math.random() * 3; // 隨機延遲
+      this.stars.push({x, y, size, delay});
     }
+    
+    // 延遲應用樣式，以允許DOM更新
+    setTimeout(() => {
+      const starElements = document.querySelectorAll('.star');
+      this.stars.forEach((star, index) => {
+        if (starElements[index]) {
+          const el = starElements[index] as HTMLElement;
+          el.style.left = `${star.x}%`;
+          el.style.top = `${star.y}%`;
+          el.style.width = `${star.size}px`;
+          el.style.height = `${star.size}px`;
+          el.style.animationDelay = `${star.delay}s`;
+        }
+      });
+    }, 0);
   }
 } 

@@ -4,6 +4,30 @@
   flex-direction: column;
 }
 
+.nav-header {
+  background-color: rgba(15, 23, 42, 0.7); // 深藍色半透明
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  color: #f1f5f9;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  
+  a {
+    color: #cbd5e1;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+    
+    &:hover {
+      color: #38bdf8;
+      transform: translateY(-2px);
+    }
+    
+    &.active {
+      color: #38bdf8;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    }
+  }
+}
+
 .main-nav {
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
