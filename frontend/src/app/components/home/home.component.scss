@@ -6,6 +6,9 @@
   transition: color 0.3s ease;
   background-color: transparent;
   color: var(--text-primary);
+  
+  // 啟用平滑滾動
+  scroll-behavior: smooth;
 
   // 深色模式樣式
   &.dark {
@@ -19,9 +22,9 @@
         color: var(--text-primary);
         border-bottom: none;
 
-        &::after {
-          background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-        }
+        // &::after {
+        //   background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+        // }
       }
     }
     
@@ -37,6 +40,7 @@
     backdrop-filter: blur(5px);
     background-color: rgba(15, 23, 42, 0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    scroll-margin-top: 80px; // 設置滾動目標的頂部邊距，避免被導航欄擋住
 
     &:hover {
       transform: translateY(-5px);
@@ -66,72 +70,216 @@
 
   // 個人資料區域
   .profile-section {
+    min-height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    
+    &:hover {
+      transform: none !important;
+      border-color: transparent !important;
+    }
+    
     .profile-header {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: 5rem;
+      width: 100%;
 
-      .profile-avatar {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 4px solid var(--bg-primary);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.05);
+      .profile-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        min-width: 240px;
+        
+        h1 {
+          font-size: 2.5rem;
+          color: var(--text-primary);
+          font-weight: 700;
+          letter-spacing: -0.5px;
+          margin: 0;
+          transition: color 0.3s ease;
         }
+        
+        .profile-avatar {
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 4px solid rgba(99, 102, 241, 0.2);
+          box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+          aspect-ratio: 1/1;
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          &:hover {
+            transform: scale(1.05);
+            border-color: rgba(99, 102, 241, 0.4);
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        
+        .social-links {
+          display: flex;
+          gap: 1.5rem;
+          margin-top: 0.5rem;
+          
+          .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            
+            i {
+              font-size: 1.4rem;
+              color: var(--text-primary);
+              transition: color 0.3s ease;
+            }
+            
+            &:hover {
+              transform: translateY(-3px);
+              background-color: rgba(99, 102, 241, 0.2);
+              border-color: rgba(99, 102, 241, 0.4);
+              box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+              
+              i {
+                color: var(--accent-color);
+              }
+            }
+            
+            &.github:hover i {
+              color: #f0f6fc;
+            }
+            
+            &.resume:hover i {
+              color: #ff7300;
+            }
+          }
         }
       }
 
       .profile-info {
         flex: 1;
-
-        h1 {
-          font-size: 2.5rem;
-          color: var(--text-primary);
-          margin-bottom: 0.8rem;
-          font-weight: 700;
-          letter-spacing: -0.5px;
-          transition: color 0.3s ease;
-        }
-
-        .contact-info {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        
+        .profile-bio {
           color: var(--text-secondary);
-
-          span {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 1.5rem;
-            backdrop-filter: blur(1px);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-
-            &:hover {
-              transform: translateY(-3px);
-              box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          line-height: 1.7;
+          max-width: 800px;
+          text-align: left;
+          
+          p {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            transition: color 0.3s ease;
+            
+            &:last-child {
+              margin-bottom: 0;
             }
-
-            i {
-              color: var(--accent-color);
-              font-size: 1.2rem;
+            
+            &:first-child {
+              font-size: 1.6rem;
+              font-weight: 500;
+              background: linear-gradient(90deg, var(--accent-color), #60a5fa);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              margin-bottom: 1.2rem;
             }
           }
         }
       }
     }
+    
+    // 媒體查詢，確保在小螢幕上正確顯示
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        
+        .profile-left {
+          margin-bottom: 1rem;
+        }
+        
+        .profile-info {
+          text-align: center;
+          align-items: center;
+          
+          .profile-bio p {
+            text-align: center;
+            padding: 0 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  // 導航按鈕
+  .section-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+    position: sticky;
+    top: 0;
+    padding: 1rem 0;
+    z-index: 100;
+    background-color: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 20px 20px;
+    
+    .nav-btn {
+      padding: 0.8rem 1.5rem;
+      background-color: rgba(15, 23, 42, 0.3);
+      color: var(--text-primary);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      
+      &:hover, &.active {
+        background-color: rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+      }
+    }
+  }
+  
+  // 內容區域容器
+  .content-container {
+    margin-top: 3rem;
+  }
+  
+  // 保留淡入動畫，但用於部分元素的交互效果
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   // 自我介紹
@@ -495,7 +643,7 @@
             .level-bar {
               height: 100%;
               border-radius: 3px;
-              background-color: var(--accent-color);
+              background-color: transparent;
               transition: width 0.5s ease, box-shadow 0.3s ease;
             }
           }
@@ -509,7 +657,7 @@
         
         &.python {
           .skill-icon i { color: #3776AB; }
-          &:hover .level-bar { background-color: #3776AB; }
+          // &:hover .level-bar { background-color: #3776AB; }
         }
         
         &.go {
@@ -557,7 +705,7 @@
   .projects-section {
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: 1fr;
       gap: 2rem;
 
       .project-card {
@@ -568,6 +716,7 @@
         background-color: rgba(15, 23, 42, 0.2);
         backdrop-filter: blur(1px);
         border: 1px solid rgba(99, 102, 241, 0.1);
+        max-width: 100%;
 
         &:hover {
           transform: translateY(-5px);

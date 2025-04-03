@@ -1,308 +1,332 @@
 <!-- 首頁內容 -->
 <div class="home-container dark">
   <!-- 個人資料區域 -->
-  <section class="profile-section">
+  <div class="profile-section" id="profile">
     <div class="profile-header">
-      <div class="profile-avatar">
-        <img src="assets/images/avatar.jpeg" alt="個人照片">
+      <div class="profile-left">
+        <div class="profile-avatar">
+          <img src="assets/images/avatar.jpeg" alt="個人照片">
+        </div>
+        <h1>秦宇澔 Hance</h1>
+        <div class="social-links">
+          <a href="https://github.com/Hance08" class="social-icon github">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://pda.104.com.tw/profile/share/6RrZtK5mmXXCCNGEDiVGGv8NjOHVwHoC" class="social-icon resume">
+            <i class="fas fa-file-alt"></i>
+          </a>
+        </div>
       </div>
       <div class="profile-info">
-        <h1>秦宇澔</h1>
-        <div class="contact-info">
-          <span><i class="fas fa-envelope"></i>hancechin08@gmail.com</span>
-          <span><i class="fas fa-phone"></i> 0908087221</span>
-          <span><i class="fas fa-map-marker-alt"></i> 台北市</span>
+        <div class="profile-bio">
+          <p>您好，我是秦宇澔，臺灣科技大學資訊管理系學生</p>
+          <p>熱愛程式開發的我，專注於後端技術與前端框架的學習與應用</p>
+          <p>擅長 Python、Java 和 Go 等程式語言，並熟悉 Angular、Flutter 等前端技術</p>
+          <p>自學 Docker、Git、MongoDB、FastAPI、Pytorch 等技術</p>
+          <p>注重團隊合作，積極參與開源社群，致力於成為一名全方位的軟體工程師</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- 自我介紹 -->
-  <section class="about-section">
-    <h2>自我介紹</h2>
-    <div class="about-cards">
-      <!-- 課程經歷 -->
-      <div class="about-card courses">
-        <div class="card-icon">
-          <i class="fas fa-book"></i>
-        </div>
-        <h3>課程經歷</h3>
-        <div class="card-content">
-          <div class="about-item">
-            <h4><i class="fas fa-laptop-code"></i>程式語言課程</h4>
-            <ul>
-              <li>Python程式設計課程</li>
-              <li>Java物件導向程式設計課程</li>
-              <li>Go程式設計課程</li>
-              <li>行動裝置程式設計</li>
-            </ul>
-          </div>
-          <div class="about-item">
-            <h4><i class="fas fa-server"></i>DevOps</h4>
-            <ul>
-              <li>Git版本控制</li>
-              <li>Git Actions</li>
-              <li>自動化測試</li>
-            </ul>
-          </div>
-          <div class="about-item">
-            <h4><i class="fas fa-server"></i>網路安全 (修習中)</h4>
-            <ul>
-              <li>OpenSSH</li>
-              <li>JWT</li>
-              <li>TLS/SSL</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <div class="section-nav">
+    <button class="nav-btn" data-section="about" (click)="scrollToSection('about')">自我介紹</button>
+    <button class="nav-btn" data-section="skills" (click)="scrollToSection('skills')">技能專長</button>
+    <button class="nav-btn" data-section="education" (click)="scrollToSection('education')">學歷</button>
+    <button class="nav-btn" data-section="projects" (click)="scrollToSection('projects')">專案經驗</button>
+    <button class="nav-btn" data-section="experience" (click)="scrollToSection('experience')">工作經歷</button>
+  </div>
 
-      <!-- 專題經歷 -->
-      <div class="about-card project">
-        <div class="card-icon">
-          <i class="fas fa-project-diagram"></i>
+  <!-- 內容區域容器 -->
+  <div class="content-container">
+    <!-- 自我介紹 -->
+    <section class="about-section" id="about">
+      <h2>自我介紹</h2>
+      <div class="about-cards">
+        <!-- 課程經歷 -->
+        <div class="about-card courses">
+          <div class="card-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>課程經歷</h3>
+          <div class="card-content">
+            <div class="about-item">
+              <h4><i class="fas fa-laptop-code"></i>程式語言課程</h4>
+              <ul>
+                <li>Python程式設計課程</li>
+                <li>Java物件導向程式設計課程</li>
+                <li>Go程式設計課程</li>
+                <li>行動裝置程式設計</li>
+              </ul>
+            </div>
+            <div class="about-item">
+              <h4><i class="fas fa-server"></i>DevOps</h4>
+              <ul>
+                <li>Git版本控制</li>
+                <li>Git Actions</li>
+                <li>自動化測試</li>
+              </ul>
+            </div>
+            <div class="about-item">
+              <h4><i class="fas fa-server"></i>網路安全 (修習中)</h4>
+              <ul>
+                <li>OpenSSH</li>
+                <li>JWT</li>
+                <li>TLS/SSL</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <h3>專題經歷</h3>
-        <div class="card-content">
-          <div class="about-item">
-            <h4><i class="fas fa-mobile-alt"></i> Flutter 框架開發</h4>
-            <ul>
-              <li>使用 Dart 語言撰寫 MVVM 架構的手機 APP</li>
-              <li>了解 Git 對專案開發的重要性</li>
-              <li>架設 MongoDB Server</li>
-              <li>使用 Python 撰寫 API</li>
-            </ul>
-          </div>
-          <div class="about-item">
-            <h4><i class="fab fa-git-alt"></i> Git版本控制</h4>
-            <ul>
-              <li>了解 Git 對專案開發的重要性</li>
-              <li>使用 Git 進行版本控制</li>
-            </ul>
-          </div>
-          <div class="about-item">
-            <h4><i class="fas fa-database"></i> MongoDB</h4>
-            <ul>
-              <li>MongoDB 架設</li>
-              <li>MongoDB 連線</li>
-            </ul>
-          </div>
-          <div class="about-item">
-            <h4><i class="fas fa-bolt"></i> FastAPI</h4>
-            <ul>
-              <li>撰寫API</li>
-              <li>串接API</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- 自學經歷 -->
-      <div class="about-card self-learning">
-        <div class="card-icon">
-          <i class="fas fa-laptop"></i>
+        <!-- 專題經歷 -->
+        <div class="about-card project">
+          <div class="card-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>專題經歷</h3>
+          <div class="card-content">
+            <div class="about-item">
+              <h4><i class="fas fa-mobile-alt"></i> Flutter 框架開發</h4>
+              <ul>
+                <li>使用 Dart 語言撰寫 MVVM 架構的手機 APP</li>
+                <li>了解 Git 對專案開發的重要性</li>
+                <li>架設 MongoDB Server</li>
+                <li>使用 Python 撰寫 API</li>
+              </ul>
+            </div>
+            <div class="about-item">
+              <h4><i class="fab fa-git-alt"></i> Git版本控制</h4>
+              <ul>
+                <li>了解 Git 對專案開發的重要性</li>
+                <li>使用 Git 進行版本控制</li>
+              </ul>
+            </div>
+            <div class="about-item">
+              <h4><i class="fas fa-database"></i> MongoDB</h4>
+              <ul>
+                <li>MongoDB 架設</li>
+                <li>MongoDB 連線</li>
+              </ul>
+            </div>
+            <div class="about-item">
+              <h4><i class="fas fa-bolt"></i> FastAPI</h4>
+              <ul>
+                <li>撰寫API</li>
+                <li>串接API</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <h3>自學經歷</h3>
-        <div class="card-content">
-          <div class="about-item">
-            <div class="tech-tags">
-              <span class="tech-tag docker"><i class="fab fa-docker"></i> Docker</span>
-              <span class="tech-tag mongodb"><i class="fas fa-database"></i> MongoDB</span>
-              <span class="tech-tag fastapi"><i class="fas fa-bolt"></i> FastAPI</span>
-              <span class="tech-tag flutter"><i class="fas fa-mobile-alt"></i> Flutter</span>
-              <span class="tech-tag angular"><i class="fab fa-angular"></i> Angular</span>
+
+        <!-- 自學經歷 -->
+        <div class="about-card self-learning">
+          <div class="card-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <h3>自學經歷</h3>
+          <div class="card-content">
+            <div class="about-item">
+              <div class="tech-tags">
+                <span class="tech-tag docker"><i class="fab fa-docker"></i> Docker</span>
+                <span class="tech-tag mongodb"><i class="fas fa-database"></i> MongoDB</span>
+                <span class="tech-tag fastapi"><i class="fas fa-bolt"></i> FastAPI</span>
+                <span class="tech-tag flutter"><i class="fas fa-mobile-alt"></i> Flutter</span>
+                <span class="tech-tag angular"><i class="fab fa-angular"></i> Angular</span>
+                <span class="tech-tag pytorch"><i class="fas fa-brain"></i> Pytorch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 志工經歷 -->
+        <div class="about-card volunteer">
+          <div class="card-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>志工經歷</h3>
+          <div class="card-content">
+            <div class="about-item">
+              <h4><i class="fas fa-heart"></i> 探訪長者活動</h4>
+              <ul>
+                <li>實地參訪台北市香柏樹長者關懷協會</li>
+                <li>舉辦活動與長者互動</li>
+                <li>擔任影片剪輯師</li>
+                <li>協助量測長者健康數據（血壓、體重、體溫）</li>
+                <li>主持老歌猜謎活動</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 未來展望 -->
+        <div class="about-card future">
+          <div class="card-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>未來展望</h3>
+          <div class="card-content">
+            <div class="about-item">
+              <ul>
+                <li>希望在軟體工程師的領域闖出一片天</li>
+                <li>持續學習新事物</li>
+                <li>勇於接受挑戰，不怕失敗</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 志工經歷 -->
-      <div class="about-card volunteer">
-        <div class="card-icon">
-          <i class="fas fa-hands-helping"></i>
+    <!-- 技能專長 -->
+    <section class="skills-section" id="skills">
+      <h2>技能專長</h2>
+      <div class="skills-cards">
+        <!-- 程式語言 -->
+        <div class="skill-card java">
+          <div class="skill-icon">
+            <i class="fab fa-java"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Java</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 85%"></div> -->
+            </div>
+          </div>
         </div>
-        <h3>志工經歷</h3>
-        <div class="card-content">
-          <div class="about-item">
-            <h4><i class="fas fa-heart"></i> 探訪長者活動</h4>
-            <ul>
-              <li>實地參訪台北市香柏樹長者關懷協會</li>
-              <li>舉辦活動與長者互動</li>
-              <li>擔任影片剪輯師</li>
-              <li>協助量測長者健康數據（血壓、體重、體溫）</li>
-              <li>主持老歌猜謎活動</li>
-            </ul>
+        
+        <div class="skill-card python">
+          <div class="skill-icon">
+            <i class="fab fa-python"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Python</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 90%"></div> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card go">
+          <div class="skill-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Go</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 75%"></div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- 框架工具 -->
+        <div class="skill-card angular">
+          <div class="skill-icon">
+            <i class="fab fa-angular"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Angular</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 80%"></div> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card flutter">
+          <div class="skill-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Flutter</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 85%"></div> -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- 其他技能 -->
+        <div class="skill-card git">
+          <div class="skill-icon">
+            <i class="fab fa-git-alt"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Git</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 85%"></div> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-card docker">
+          <div class="skill-icon">
+            <i class="fab fa-docker"></i>
+          </div>
+          <div class="skill-info">
+            <h3>Docker</h3>
+            <div class="skill-level">
+              <!-- <div class="level-bar" style="width: 70%"></div> -->
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 未來展望 -->
-      <div class="about-card future">
-        <div class="card-icon">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h3>未來展望</h3>
-        <div class="card-content">
-          <div class="about-item">
-            <ul>
-              <li>希望在軟體工程師的領域闖出一片天</li>
-              <li>持續學習新事物</li>
-              <li>勇於接受挑戰，不怕失敗</li>
-            </ul>
+    <!-- 學歷 -->
+    <section class="education-section" id="education">
+      <h2>學歷</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2022 - now</div>
+          <div class="timeline-content">
+            <h3>臺灣科技大學</h3>
+            <p class="degree">資訊管理系</p>
           </div>
         </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2019 - 2022</div>
+          <div class="timeline-content">
+            <h3>桃園市立中壢高商</h3>
+            <p class="degree">資料處理科</p>
+          </div>
+        </div>
+        <!-- 可以添加更多學歷 -->
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 工作經歷 -->
-  <section class="experience-section">
-    <h2>工作經歷</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2024 - Now</div>
-        <div class="timeline-content">
-          <h3>游濤數學_台北市私立龍圖文理短期補習班</h3>
-          <p class="position">工讀生</p>
+    <!-- 專案經驗 -->
+    <section class="projects-section" id="projects">
+      <h2>專案經驗</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>基於碳權之電動車充電遊戲化APP</h3>
+          <p class="project-period">2025 - Now</p>
+          <p class="project-role">擔任角色：前、後端開發工程師</p>
           <ul>
-            <li>帶班</li>
-            <li>文書處理</li>
-            <li>輔導學生</li>
+            <li>我們設計一款APP主要核心是給電動車用戶可以使用更綠能的充電樁進行充電，並且給予綠色積分，這個積分會應用在遊戲上。其中主畫面會以車庫的樣式呈現，在上面主要會有進入遊戲的按鈕和資訊頁面。資訊頁面我們會呈現車子的數據、附近的充電樁狀態等。
+              我們目前的進度，已架好MongoDB資料庫伺服器，並從政府TDX平台獲取台灣充電樁資料，存放在資料庫裡。APP的進度是成功做出登入註冊介面，並串好利用Python的FastAPI的API介面，能把註冊完的資料存進資料庫，並且有將密碼進行雜湊，提升資料案全性，登入時也會透過API介面調取資料庫的資料，我們還有另外串GoogleAPI登入，提供用戶的方便性。正在進行的是主畫面的框架編寫及功能的實作。</li>
           </ul>
         </div>
+        <!-- 可以添加更多專案 -->
       </div>
-      <!-- 可以添加更多工作經歷 -->
-    </div>
-  </section>
+    </section>
 
-  <!-- 學歷 -->
-  <section class="education-section">
-    <h2>學歷</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2022 - now</div>
-        <div class="timeline-content">
-          <h3>臺灣科技大學</h3>
-          <p class="degree">資訊管理系</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2019 - 2022</div>
-        <div class="timeline-content">
-          <h3>桃園市立中壢高商</h3>
-          <p class="degree">資料處理科</p>
-        </div>
-      </div>
-      <!-- 可以添加更多學歷 -->
-    </div>
-  </section>
-
-  <!-- 技能專長 -->
-  <section class="skills-section">
-    <h2>技能專長</h2>
-    <div class="skills-cards">
-      <!-- 程式語言 -->
-      <div class="skill-card java">
-        <div class="skill-icon">
-          <i class="fab fa-java"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Java</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 85%"></div>
+    <!-- 工作經歷 -->
+    <section class="experience-section" id="experience">
+      <h2>工作經歷</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2024 - Now</div>
+          <div class="timeline-content">
+            <h3>游濤數學_台北市私立龍圖文理短期補習班</h3>
+            <p class="position">工讀生</p>
+            <ul>
+              <li>帶班</li>
+              <li>文書處理</li>
+              <li>輔導學生</li>
+            </ul>
           </div>
         </div>
+        <!-- 可以添加更多工作經歷 -->
       </div>
-      
-      <div class="skill-card python">
-        <div class="skill-icon">
-          <i class="fab fa-python"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Python</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 90%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-card go">
-        <div class="skill-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Go</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 75%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 框架工具 -->
-      <div class="skill-card angular">
-        <div class="skill-icon">
-          <i class="fab fa-angular"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Angular</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 80%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-card flutter">
-        <div class="skill-icon">
-          <i class="fas fa-mobile-alt"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Flutter</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 85%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 其他技能 -->
-      <div class="skill-card git">
-        <div class="skill-icon">
-          <i class="fab fa-git-alt"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Git</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 85%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skill-card docker">
-        <div class="skill-icon">
-          <i class="fab fa-docker"></i>
-        </div>
-        <div class="skill-info">
-          <h3>Docker</h3>
-          <div class="skill-level">
-            <div class="level-bar" style="width: 70%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 專案經驗 -->
-  <section class="projects-section">
-    <h2>專案經驗</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>基於碳權之電動車充電遊戲化APP</h3>
-        <p class="project-period">2025 - Now</p>
-        <p class="project-role">擔任角色：前、後端開發工程師</p>
-        <ul>
-          <li>我們設計一款APP主要核心是給電動車用戶可以使用更綠能的充電樁進行充電，並且給予綠色積分，這個積分會應用在遊戲上。其中主畫面會以車庫的樣式呈現，在上面主要會有進入遊戲的按鈕和資訊頁面。資訊頁面我們會呈現車子的數據、附近的充電樁狀態等。
-            我們目前的進度，已架好MongoDB資料庫伺服器，並從政府TDX平台獲取台灣充電樁資料，存放在資料庫裡。APP的進度是成功做出登入註冊介面，並串好利用Python的FastAPI的API介面，能把註冊完的資料存進資料庫，並且有將密碼進行雜湊，提升資料案全性，登入時也會透過API介面調取資料庫的資料，我們還有另外串GoogleAPI登入，提供用戶的方便性。正在進行的是主畫面的框架編寫及功能的實作。</li>
-        </ul>
-      </div>
-      <!-- 可以添加更多專案 -->
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
