@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/api'
+  apiUrl: 'https://hanceapi.cfv.biz/api'  // 使用相對路徑
 }; 

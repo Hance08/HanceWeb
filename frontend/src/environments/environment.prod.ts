@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/api'  // 相對路徑，假設API與前端部署在同一域
+  apiUrl: 'https://hanceapi.cfv.biz/api'  // 使用相對路徑
 }; 

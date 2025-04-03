@@ -43,7 +43,7 @@
               {
                 "type": "anyComponentStyle",
                 "maximumWarning": "8kb",
-                "maximumError": "10kb"
+                "maximumError": "100kb"
               }
             ]
           },
@@ -58,7 +58,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "8kb",
-                  "maximumError": "10kb"
+                  "maximumError": "100kb"
                 }
               ],
               "outputHashing": "all"
@@ -76,6 +76,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "host": "10.0.2.22",
+            "port": 80,
+            "servePath": "/",
+            "open": true,
+            "allowedHosts": ["hance.cfv.biz", "myweb.local", "localhost"]
+          },
           "configurations": {
             "production": {
               "browserTarget": "frontend:build:production"
