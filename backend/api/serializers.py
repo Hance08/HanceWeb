@@ -17,6 +17,7 @@ class ContactSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True)
     name = serializers.CharField(max_length=100)
     email = serializers.EmailField()
+    subject = serializers.CharField(max_length=200)
     message = serializers.CharField()
     created_at = serializers.DateTimeField(read_only=True)
     status = serializers.CharField(read_only=True)

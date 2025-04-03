@@ -1,10 +1,14 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.core.mail import send_mail
 from django.conf import settings
+import logging
 from .models import Project, Contact, Skill
 from .serializers import ProjectSerializer, ContactSerializer, SkillSerializer, UserSerializer
+
+# 設置日誌記錄
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -42,22 +46,62 @@ class ContactViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create(self, request):
+        """處理聯絡表單提交"""
         serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
-            contact = Contact(**serializer.validated_data)
-            contact.save()
-            
-            # Send email notification
-            send_mail(
-                f'New Contact Form Submission from {contact.name}',
-                f'Message: {contact.message}\nFrom: {contact.email}',
-                settings.DEFAULT_FROM_EMAIL,
-                [settings.ADMIN_EMAIL],
-                fail_silently=False,
-            )
-            
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            try:
+                # 創建聯絡記錄
+                contact = Contact(**serializer.validated_data)
+                contact.save()
+                
+                # 記錄成功提交的表單
+                logger.info(f"Contact form submitted by {contact.name} ({contact.email})")
+                
+                # 發送電子郵件通知
+                subject = f'新的聯絡表單提交: {contact.subject}'
+                message = f"""
+收到來自 {contact.name} 的新訊息
+
+電子郵件: {contact.email}
+主題: {contact.subject}
+
+訊息內容:
+{contact.message}
+                """
+                
+                try:
+                    send_mail(
+                        subject,
+                        message,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [settings.ADMIN_EMAIL],
+                        fail_silently=False,
+                    )
+                except Exception as e:
+                    # 記錄電子郵件發送錯誤，但不影響API響應
+                    logger.error(f"Failed to send email notification: {str(e)}")
+                
+                # 返回成功响應
+                return Response({
+                    'success': True,
+                    'message': '您的訊息已成功送出！感謝您的聯繫。',
+                    'data': serializer.data
+                }, status=status.HTTP_201_CREATED)
+                
+            except Exception as e:
+                logger.error(f"Error saving contact form: {str(e)}")
+                return Response({
+                    'success': False,
+                    'message': '提交表單時發生錯誤，請稍後再試。',
+                    'error': str(e)
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        # 返回表單驗證錯誤
+        return Response({
+            'success': False,
+            'message': '請檢查表單中的錯誤並再試一次。',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 class SkillViewSet(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

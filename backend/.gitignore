@@ -1,0 +1,46 @@
+# 環境變數文件
+.env
+.env.production
+.env.local
+
+# 虛擬環境
+venv/
+env/
+.virtualenv/
+
+# Python 緩存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Django 相關
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# 分發 / 構建文件
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE 相關
+.idea/
+.vscode/
+*.swp
+*.swo 

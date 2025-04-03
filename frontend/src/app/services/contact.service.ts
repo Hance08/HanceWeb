@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 // 聯絡表單接口
 export interface ContactForm {
@@ -10,29 +12,48 @@ export interface ContactForm {
   message: string;
 }
 
+// API回應接口
+export interface ApiResponse {
+  success: boolean;
+  message: string;
+  data?: any;
+  errors?: any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
+  private apiUrl = environment.apiUrl || 'http://localhost:8000/api';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   /**
-   * 發送聯絡表單
-   * 目前模擬 API 呼叫，實際實現時應連接到後端 API
+   * 發送聯絡表單到後端API
    */
-  sendContactForm(formData: ContactForm): Observable<{ success: boolean, message: string }> {
-    console.log('發送的表單數據:', formData);
-    
-    // 模擬 API 調用 (2秒延遲)
-    return of({
-      success: true,
-      message: '您的訊息已成功送出！我們將盡快回覆您。'
-    }).pipe(
-      delay(2000)
-    );
-    
-    // 實際實現時，應使用 HttpClient 發送請求到後端 API
-    // return this.http.post<{success: boolean, message: string}>('/api/contact', formData);
+  sendContactForm(formData: ContactForm): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.apiUrl}/contacts/`, formData)
+      .pipe(
+        map(response => {
+          console.log('API回應:', response);
+          return response;
+        }),
+        catchError(error => {
+          console.error('聯絡表單提交錯誤:', error);
+          
+          // 從錯誤響應中提取有用的信息
+          let errorMessage = '發送訊息時出錯，請稍後再試。';
+          
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          
+          return of({
+            success: false,
+            message: errorMessage,
+            errors: error.error?.errors || {}
+          });
+        })
+      );
   }
 }

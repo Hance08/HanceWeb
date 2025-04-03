@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactService, ContactForm } from '../../services/contact.service';
+import { ContactService, ContactForm, ApiResponse } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   isSubmitting = false;
   submitMessage: { type: 'success' | 'error', text: string } | null = null;
+  apiErrors: any = {};
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +40,11 @@ export class ContactComponent implements OnInit {
     
     if (!field) return '';
     
+    // 檢查API返回的錯誤
+    if (this.apiErrors[fieldName]) {
+      return this.apiErrors[fieldName];
+    }
+    
     if (field.hasError('required')) {
       return '此欄位為必填項';
     }
@@ -57,6 +63,9 @@ export class ContactComponent implements OnInit {
 
   // 提交表單
   onSubmit(): void {
+    // 重置API錯誤
+    this.apiErrors = {};
+    
     if (this.contactForm.invalid) {
       // 標記所有欄位為已訪問，以顯示錯誤訊息
       Object.keys(this.contactForm.controls).forEach(key => {
@@ -73,8 +82,9 @@ export class ContactComponent implements OnInit {
     
     this.contactService.sendContactForm(formData)
       .subscribe({
-        next: (response) => {
+        next: (response: ApiResponse) => {
           this.isSubmitting = false;
+          
           if (response.success) {
             this.submitMessage = {
               type: 'success',
@@ -84,8 +94,13 @@ export class ContactComponent implements OnInit {
           } else {
             this.submitMessage = {
               type: 'error',
-              text: response.message || '發送訊息時出錯，請稍後再試。'
+              text: response.message
             };
+            
+            // 處理可能的欄位錯誤
+            if (response.errors) {
+              this.apiErrors = response.errors;
+            }
           }
         },
         error: (error) => {
