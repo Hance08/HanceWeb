@@ -1,0 +1,71 @@
+.contact-page {
+  position: relative;
+  z-index: 10;
+  
+  // 標題樣式
+  h1, h2, h3 {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  // 聯絡卡片樣式
+  .bg-white {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // 表單元素樣式
+  input, textarea {
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.9);
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    &:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // 按鈕動畫
+  button {
+    position: relative;
+    overflow: hidden;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+    
+    &:hover:before {
+      width: 100%;
+    }
+  }
+  
+  // 中文文字樣式
+  .chinese-text {
+    font-family: 'Noto Sans TC', sans-serif;
+    letter-spacing: 0.05em;
+  }
+  
+  // 地圖容器
+  .map-container {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+}
