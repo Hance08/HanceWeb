@@ -10,6 +10,9 @@ services:
       - backend
     networks:
       - app-network
+    restart: unless-stopped
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
 
   backend:
     build: ./backend
@@ -30,6 +33,7 @@ services:
       - app-network
     volumes:
       - backend-data:/app/data
+    restart: unless-stopped
 
 networks:
   app-network:

@@ -29,12 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-development')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = True  # 開發環境設為True，部署到公網前改為False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['hanceapi.cfv.biz', 'hance.cfv.biz', 'www.hance.cfv.biz', '10.0.2.22', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -134,13 +134,89 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# 添加日誌配置
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'api': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# 確保CORS配置包含前端使用的所有地址
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "http://localhost:80",
     "http://localhost",
+    "http://10.0.2.22:4200",
+    "http://10.0.2.22:80",
+    "http://10.0.2.22",
+    "http://10.0.2.22:8000",
+    "http://myweb.local",
+    "http://myweb.local:80",
+    "http://myweb.local:4200",
+    "http://hance.cfv.biz",
+    "https://hance.cfv.biz",
+    "http://hanceapi.cfv.biz",
+    "https://hanceapi.cfv.biz",
+]
+
+# 添加額外的 CORS 設定
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_PREFLIGHT_MAX_AGE = 86400  # 24小時
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

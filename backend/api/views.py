@@ -47,12 +47,14 @@ class ContactViewSet(viewsets.ViewSet):
 
     def create(self, request):
         """處理聯絡表單提交"""
+        # 記錄收到的請求數據以便調試
+        logger.debug(f"Received contact form data: {request.data}")
+        
         serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
             try:
-                # 創建聯絡記錄
-                contact = Contact(**serializer.validated_data)
-                contact.save()
+                # 使用序列化器的 save 方法創建聯絡記錄
+                contact = serializer.save()
                 
                 # 記錄成功提交的表單
                 logger.info(f"Contact form submitted by {contact.name} ({contact.email})")
@@ -95,6 +97,9 @@ class ContactViewSet(viewsets.ViewSet):
                     'message': '提交表單時發生錯誤，請稍後再試。',
                     'error': str(e)
                 }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        # 記錄表單驗證錯誤
+        logger.warning(f"Contact form validation failed: {serializer.errors}")
         
         # 返回表單驗證錯誤
         return Response({
