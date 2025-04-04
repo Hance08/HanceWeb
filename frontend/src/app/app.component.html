@@ -6,8 +6,9 @@
         <div class="flex items-center">
           <a routerLink="/" class="font-bold text-xl">Hance Web</a>
         </div>
-        <div class="flex items-center space-x-6">
-          <div class="hidden md:flex space-x-6">
+        <div class="flex items-center">
+          <!-- 移除 hidden md:flex，使按鈕在所有螢幕尺寸都顯示 -->
+          <div class="flex space-x-4">
             <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" lang="zh-TW" class="chinese-text">首頁</a>
             <a routerLink="/contact" routerLinkActive="active" lang="zh-TW" class="chinese-text">聯絡我</a>
           </div>

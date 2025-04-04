@@ -20,12 +20,18 @@
   --accent-color: #38bdf8;
 }
 
+html {
+  min-width: 320px; /* 設置最小寬度，防止頁面過度縮小 */
+}
+
 body {
   margin: 0;
   font-family: 'Quicksand', 'LXGW WenKai TC', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
   background-color: transparent;
   color: var(--text-primary);
+  min-width: 320px; /* 設置最小寬度，防止頁面過度縮小 */
+  overflow-x: hidden; /* 防止水平滾動 */
 }
 
 a {

@@ -20,23 +20,25 @@
       <div class="profile-info">
         <div class="profile-bio">
           <p>您好，我是秦宇澔，臺灣科技大學資訊管理系學生</p>
-          <p>熱愛程式開發的我，專注於後端技術與前端框架的學習與應用</p>
-          <p>擅長 Python、Java 和 Go 等程式語言，並熟悉 Angular、Flutter 等前端技術</p>
-          <p>自學 Docker、Git、MongoDB、FastAPI、Pytorch 等技術</p>
-          <p>注重團隊合作，積極參與開源社群，致力於成為一名全方位的軟體工程師</p>
+          <p class="break-words">熱愛程式開發的我，專注於後端技術與前端框架的學習與應用</p>
+          <p class="break-words">擅長 Python、Java 和 Go 等程式語言，並熟悉 Angular、Flutter 等前端技術</p>
+          <p class="break-words">自學 Docker、Git、MongoDB、FastAPI、Pytorch 等技術</p>
+          <p class="break-words">注重團隊合作，積極參與開源社群，致力於成為一名全方位的軟體工程師</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section-nav">
-    <button class="nav-btn" data-section="about" (click)="scrollToSection('about')">自我介紹</button>
-    <button class="nav-btn" data-section="skills" (click)="scrollToSection('skills')">技能專長</button>
-    <button class="nav-btn" data-section="languages" (click)="scrollToSection('languages')">語文能力</button>
-    <button class="nav-btn" data-section="education" (click)="scrollToSection('education')">學歷</button>
-    <button class="nav-btn" data-section="projects" (click)="scrollToSection('projects')">專案經驗</button>
-    <button class="nav-btn" data-section="certifications" (click)="scrollToSection('certifications')">證照</button>
-    <button class="nav-btn" data-section="experience" (click)="scrollToSection('experience')">工作經歷</button>
+    <div class="nav-scroller">
+      <button class="nav-btn" data-section="about" (click)="scrollToSection('about')">自我介紹</button>
+      <button class="nav-btn" data-section="skills" (click)="scrollToSection('skills')">技能專長</button>
+      <button class="nav-btn" data-section="languages" (click)="scrollToSection('languages')">語文能力</button>
+      <button class="nav-btn" data-section="education" (click)="scrollToSection('education')">學歷</button>
+      <button class="nav-btn" data-section="projects" (click)="scrollToSection('projects')">專案經驗</button>
+      <button class="nav-btn" data-section="certifications" (click)="scrollToSection('certifications')">證照</button>
+      <button class="nav-btn" data-section="experience" (click)="scrollToSection('experience')">工作經歷</button>
+    </div>
   </div>
 
   <!-- 內容區域容器 -->

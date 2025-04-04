@@ -20,10 +20,10 @@
   // 表單元素樣式
   input, textarea {
     transition: all 0.3s ease;
-    color: rgba(255, 255, 255, 0.9);
+    color: #333;
     
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(0, 0, 0, 0.5);
     }
     
     &:focus {
