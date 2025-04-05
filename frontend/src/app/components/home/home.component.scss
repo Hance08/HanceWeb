@@ -194,7 +194,7 @@
           p {
             margin-bottom: 0.8rem;
             font-size: 1.2rem;
-            white-space: normal;
+            white-space: nowrap;
             overflow: visible;
             text-overflow: clip;
             display: block;
@@ -236,6 +236,7 @@
           .profile-bio p {
             text-align: center;
             padding: 0 1rem;
+            white-space: normal;
           }
         }
       }

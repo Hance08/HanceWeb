@@ -25,6 +25,7 @@ export interface ApiResponse {
 })
 export class ContactService {
   private apiUrl = environment.apiUrl || 'http://localhost:8000/api';
+  private version = environment.version || new Date().getTime();
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +33,10 @@ export class ContactService {
    * 發送聯絡表單到後端API
    */
   sendContactForm(formData: ContactForm): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(`${this.apiUrl}/contacts/`, formData)
+    // 添加版本參數避免快取
+    const url = `${this.apiUrl}/contacts/?v=${this.version}`;
+    
+    return this.http.post<ApiResponse>(url, formData)
       .pipe(
         map(response => {
           console.log('API回應:', response);

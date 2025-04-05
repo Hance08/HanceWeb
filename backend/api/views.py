@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from django.core.mail import send_mail
 from django.conf import settings
 import logging
@@ -9,6 +9,14 @@ from .serializers import ProjectSerializer, ContactSerializer, SkillSerializer, 
 
 # 設置日誌記錄
 logger = logging.getLogger(__name__)
+
+# 健康檢查視圖，用於Docker容器監控
+@api_view(['GET'])
+def health_check(request):
+    """
+    簡單的健康檢查端點，用於確認API服務運行正常
+    """
+    return Response({"status": "healthy"}, status=status.HTTP_200_OK)
 
 # Create your views here.
 

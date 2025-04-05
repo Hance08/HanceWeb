@@ -32,9 +32,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # 開發環境設為True，部署到公網前改為False
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'  # 從環境變量讀取，默認為False
 
-ALLOWED_HOSTS = ['hanceapi.cfv.biz', 'hance.cfv.biz', 'www.hance.cfv.biz', '10.0.2.22', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['hanceapi.cfv.biz', 'hance.cfv.biz', 'www.hance.cfv.biz', '10.0.2.22', 'localhost', '127.0.0.1', 'backend']
 
 
 # Application definition
@@ -177,13 +177,13 @@ LOGGING = {
 
 # 確保CORS配置包含前端使用的所有地址
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
+    "http://localhost:8000",
     "http://localhost:80",
     "http://localhost",
     "http://10.0.2.22:4200",
     "http://10.0.2.22:80",
     "http://10.0.2.22",
-    "http://10.0.2.22:8000",
+    "https://10.0.2.22:8000",
     "http://myweb.local",
     "http://myweb.local:80",
     "http://myweb.local:4200",

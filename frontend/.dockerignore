@@ -1,0 +1,30 @@
+# Node 相關
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Angular 快取
+.angular/cache
+
+# 構建產物
+/dist
+
+# Git 相關
+.git
+.gitignore
+
+# IDE 設定
+.idea
+.vscode
+
+# 測試
+/coverage
+/e2e
+
+# 其他
+.DS_Store
+.env*
+Dockerfile
+.dockerignore
+*.md
+*.log 

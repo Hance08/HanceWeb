@@ -1,0 +1,53 @@
+# Python 相關
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 快取檔案
+.cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 系統檔案
+.DS_Store
+
+# 版本控制
+.git
+.gitignore
+
+# IDE 設定
+.idea
+.vscode
+
+# 本地環境
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 其他
+*.log
+*.bak
+Dockerfile
+.dockerignore
+README*
+LICENSE 
